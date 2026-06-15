@@ -20,8 +20,9 @@ st.set_page_config(page_title="Voluntary Carbon Market Analytics",
 branding.inject()
 
 DATA = Path(__file__).parent / "data"
-ACCENT1, ACCENT2 = "#7b5cff", "#2fc8f5"
-GRID = "rgba(255,255,255,0.07)"
+ACCENT1, ACCENT2 = branding.FOREST, branding.CLAY
+GRID = "rgba(44,47,40,0.10)"
+INK = branding.INK
 
 
 @st.cache_data
@@ -48,7 +49,7 @@ def style(fig, height=380, legend=True):
         margin=dict(l=10, r=10, t=30, b=10),
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
-        font={"color": "#cfcfd6", "family": "Inter"},
+        font={"color": INK, "family": "Inter"},
         legend=dict(orientation="h", yanchor="bottom", y=1.0, x=0,
                     bgcolor="rgba(0,0,0,0)") if legend else None,
         showlegend=legend,
@@ -60,9 +61,9 @@ def style(fig, height=380, legend=True):
 
 def insight(text):
     st.markdown(
-        f'<div style="border-left:3px solid {ACCENT2};background:rgba(47,200,245,0.06);'
-        f'padding:12px 16px;border-radius:0 10px 10px 0;margin:6px 0 14px;'
-        f'color:#dcdce2;font-size:0.95rem"><b style="color:{ACCENT2}">What stands out — </b>'
+        f'<div style="border-left:3px solid {ACCENT2};background:rgba(194,102,58,0.08);'
+        f'padding:12px 16px;border-radius:0 6px 6px 0;margin:6px 0 14px;'
+        f'color:#3a3d36;font-size:0.95rem"><b style="color:{ACCENT2}">What stands out — </b>'
         f'{text}</div>',
         unsafe_allow_html=True,
     )
@@ -174,7 +175,7 @@ with tab_integrity:
     cat = D["category"]
     cat = cat[cat["issued_mt"] >= 1].dropna(subset=["retirement_rate"])
     cat = cat.sort_values("retirement_rate")
-    colors = [ACCENT2 if r >= K["retirement_rate"] else "#ff7a59"
+    colors = [branding.FOREST if r >= K["retirement_rate"] else branding.CLAY
               for r in cat["retirement_rate"]]
     fig = go.Figure(go.Bar(
         x=cat["retirement_rate"] * 100, y=cat["label"], orientation="h",
@@ -182,10 +183,10 @@ with tab_integrity:
         text=[f"{r:.0%}" for r in cat["retirement_rate"]], textposition="outside",
     ))
     fig.add_vline(x=K["retirement_rate"] * 100, line_dash="dash",
-                  line_color="#cfcfd6",
+                  line_color="#6b6d63",
                   annotation_text=f"market average {K['retirement_rate']:.0%}",
                   annotation_position="bottom right",
-                  annotation_font_color="#cfcfd6")
+                  annotation_font_color="#6b6d63")
     fig.update_layout(
         xaxis_title="Share of issued credits that have been retired (%)",
         xaxis_range=[0, 78],
