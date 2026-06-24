@@ -9,8 +9,8 @@ weight.
 import streamlit as st
 
 INK = "#2c2f28"
-FOREST = "#2f6f4e"
-CLAY = "#c2663a"
+FOREST = "#1e6f52"
+CLAY = "#c8851f"
 MUTED = "#6b6d63"
 PAPER = "#f4f1e8"
 
@@ -41,7 +41,7 @@ h2, h3 {
 [data-testid="stMetric"] {
   background: #fbf9f2;
   border: 1px solid #e0d9c6;
-  border-top: 3px solid #2f6f4e;
+  border-top: 3px solid #1e6f52;
   border-radius: 4px;
   padding: 14px 18px;
 }
@@ -53,36 +53,36 @@ h2, h3 {
 [data-testid="stSidebar"] { background: #efeadd; border-right: 1px solid #ddd5c2; }
 
 [data-testid="stTabs"] button[role="tab"] { font-weight: 600; color: #6b6d63; }
-[data-testid="stTabs"] button[role="tab"][aria-selected="true"] { color: #2f6f4e; }
+[data-testid="stTabs"] button[role="tab"][aria-selected="true"] { color: #1e6f52; }
 [data-testid="stIconMaterial"] { font-family: 'Material Symbols Rounded' !important; }
 
 div[data-testid="stExpander"] {
   border: 1px solid #e0d9c6; border-radius: 4px; background: #fbf9f2;
 }
 .stButton button {
-  border-radius: 4px; border: 1px solid #c7bfa9; background: #fbf9f2; color: #2f6f4e;
+  border-radius: 4px; border: 1px solid #c7bfa9; background: #fbf9f2; color: #1e6f52;
 }
-.stButton button:hover { border-color: #2f6f4e; }
+.stButton button:hover { border-color: #1e6f52; }
 
 /* editorial masthead: a hairline rule above a letterspaced kicker */
 .masthead-rule { height: 1px; background: #2c2f28; width: 100%; margin-bottom: 10px; opacity: 0.5; }
 .eyebrow {
   text-transform: uppercase; letter-spacing: 0.2em;
-  font-size: 0.72rem; color: #2f6f4e; font-weight: 600; margin-bottom: 4px;
+  font-size: 0.72rem; color: #c8851f; font-weight: 600; margin-bottom: 4px;
 }
 
 .dl-step {
   background: #fbf9f2; border: 1px solid #e0d9c6; border-radius: 4px;
   padding: 18px; height: 100%;
 }
-.dl-step b { color: #2f6f4e; font-family: 'Fraunces', serif; font-size: 1.05rem; }
+.dl-step b { color: #1e6f52; font-family: 'Fraunces', serif; font-size: 1.05rem; }
 .dl-step .n {
   display: inline-block; font-family: 'Fraunces', serif; font-size: 1.6rem;
-  color: #c2663a; font-weight: 700; margin-bottom: 4px;
+  color: #c8851f; font-weight: 700; margin-bottom: 4px;
 }
 
 table { font-size: 0.92rem; }
-a { color: #2f6f4e; }
+a { color: #1e6f52; }
 </style>
 """
 
@@ -110,7 +110,8 @@ def footer(repo: str):
     st.divider()
     st.markdown(
         f'<p style="color:#7a7c70;font-size:0.85rem">Built by '
-        f'<a href="https://drishtantleuva.github.io" target="_blank"><b>Drishtant Leuva</b></a> '
+        f'<a href="https://drishtantleuva.github.io" target="_blank">'
+        f'<b style="font-family:\'Fraunces\',Georgia,serif">Drishtant Leuva</b></a> '
         f'— Data Scientist · Risk, ESG &amp; Explainable AI &nbsp;·&nbsp; '
         f'<a href="https://github.com/drishtantleuva/{repo}" target="_blank">Source on GitHub</a> '
         f'&nbsp;·&nbsp; <a href="https://www.linkedin.com/in/drishtant-leuva/" '
